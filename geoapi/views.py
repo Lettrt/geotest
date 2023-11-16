@@ -21,7 +21,7 @@ class QueryView(views.APIView):
         serializer = QuerySerializer(data=request.data)
         if serializer.is_valid():
             query = serializer.save()
-            emul_request(query.id)
+            emul_request.delay(query.id)
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
