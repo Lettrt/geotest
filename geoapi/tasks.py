@@ -5,6 +5,6 @@ import random
 
 @shared_task
 def emul_request(query_id):
-    time.sleep(random.randint(1, 60))  # Эмуляция длительной задачи
-    result = random.choice([True, False])  # Случайный результат
+    time.sleep(random.randint(1, 60))
+    result = random.choice([True, False])
     QueryResult.objects.create(query_id=query_id, result=result)
